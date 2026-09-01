@@ -27,23 +27,33 @@
 </head>
 <body>
 
-    <!-- Aba 1: Google Sheets convertido para o formato pubhtml -->
-    <iframe id="aba1" src="https://docs.google.com/spreadsheets/d/1Sp1eq5EpzF1ipg5fI6p1r75zPCY5-V0AXhlmzJ-_YSE/edit?gid=2042431796#gid=2042431796" class="active"></iframe>
+    <!-- Aba 1: Google Sheets (usando o formato pubhtml correto) -->
+    <iframe id="aba1" data-src="https://docs.google.com/spreadsheets/d/1Sp1eq5EpzF1ipg5fI6p1r75zPCY5-V0AXhlmzJ-_YSE/pubhtml?widget=true&headers=false&gid=2042431796" class="active"></iframe>
     
-    <!-- Aba 2: Looker Studio ajustado para incorporação (/embed/) -->
-    <iframe id="aba2" src="https://lookerstudio.google.com/embed/reporting/ee58e8c4-6e36-43ed-9d10-81c56b17ed38"></iframe>
+    <!-- Aba 2: Looker Studio -->
+    <iframe id="aba2" data-src="https://lookerstudio.google.com/embed/reporting/ee58e8c4-6e36-43ed-9d10-81c56b17ed38"></iframe>
     
-    <!-- Aba 3: Looker Studio ajustado para incorporação (/embed/) -->
-    <iframe id="aba3" src="https://lookerstudio.google.com/embed/reporting/e98bca20-0700-4f3f-817f-8a562d07fb35"></iframe>
+    <!-- Aba 3: Looker Studio -->
+    <iframe id="aba3" data-src="https://lookerstudio.google.com/embed/reporting/e98bca20-0700-4f3f-817f-8a562d07fb35"></iframe>
 
     <script>
         const segundosPorAba = 15; // Tempo em segundos para cada troca
         const iframes = document.querySelectorAll('iframe');
         let indiceAtual = 0;
 
+        // Carrega o link da primeira aba logo ao abrir
+        iframes[0].src = iframes[0].getAttribute('data-src');
+
         function alternarAba() {
+            // Esconde a aba atual e limpa o src para parar o consumo de rede
             iframes[indiceAtual].classList.remove('active');
+            iframes[indiceAtual].src = ""; 
+
+            // Vai para a próxima aba
             indiceAtual = (indiceAtual + 1) % iframes.length;
+
+            // Define o link novamente e mostra a aba (forçando o Google a buscar dados atualizados)
+            iframes[indiceAtual].src = iframes[indiceAtual].getAttribute('data-src');
             iframes[indiceAtual].classList.add('active');
         }
 
