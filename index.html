@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel TV - Planilhas</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        iframe.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <iframe id="aba1" src="https://docs.google.com/spreadsheets/d/1Sp1eq5EpzF1ipg5fI6p1r75zPCY5-V0AXhlmzJ-_YSE/edit?gid=2042431796#gid=2042431796" class="active"></iframe>
+    
+    <iframe id="aba2" src="https://datastudio.google.com/reporting/e98bca20-0700-4f3f-817f-8a562d07fb35/page/uuV5F"></iframe>
+    
+    <iframe id="aba3" src="https://datastudio.google.com/u/0/reporting/ee58e8c4-6e36-43ed-9d10-81c56b17ed38/page/uuV5F"></iframe>
+
+    <script>
+        const segundosPorAba = 15; // Tempo em segundos para cada troca
+        const iframes = document.querySelectorAll('iframe');
+        let indiceAtual = 0;
+
+        function alternarAba() {
+            iframes[indiceAtual].classList.remove('active');
+            indiceAtual = (indiceAtual + 1) % iframes.length;
+            iframes[indiceAtual].classList.add('active');
+        }
+
+        setInterval(alternarAba, segundosPorAba * 1000);
+    </script>
+</body>
+</html>
