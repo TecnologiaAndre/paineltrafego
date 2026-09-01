@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Painel TV - Planilhas e Relatórios</title>
+    <title>Painel TV - Planilhas</title>
     <style>
         body, html {
             margin: 0;
@@ -27,17 +27,17 @@
 </head>
 <body>
 
-    <!-- Aba 1: Google Sheets -->
+    <!-- Aba 1: Google Sheets convertido para o formato pubhtml -->
     <iframe id="aba1" src="https://docs.google.com/spreadsheets/d/1Sp1eq5EpzF1ipg5fI6p1r75zPCY5-V0AXhlmzJ-_YSE/pubhtml?widget=true&headers=false&gid=2042431796" class="active"></iframe>
     
-    <!-- Aba 2: Looker Studio (Primeiro relatório) -->
-    <iframe id="aba2" src="https://lookerstudio.google.com/embed/reporting/e98bca20-0700-4f3f-817f-8a562d07fb35/page/uuV5F"></iframe>
+    <!-- Aba 2: Looker Studio ajustado para incorporação (/embed/) -->
+    <iframe id="aba2" src="https://lookerstudio.google.com/embed/reporting/ee58e8c4-6e36-43ed-9d10-81c56b17ed38"></iframe>
     
-    <!-- Aba 3: Looker Studio (Segundo relatório) -->
-    <iframe id="aba3" src="https://lookerstudio.google.com/embed/reporting/ee58e8c4-6e36-43ed-9d10-81c56b17ed38/page/uuV5F"></iframe>
+    <!-- Aba 3: Looker Studio ajustado para incorporação (/embed/) -->
+    <iframe id="aba3" src="https://lookerstudio.google.com/embed/reporting/e98bca20-0700-4f3f-817f-8a562d07fb35"></iframe>
 
     <script>
-        const segundosPorAba = 15; // Tempo em segundos que cada tela fica visível
+        const segundosPorAba = 15; // Tempo em segundos para cada troca
         const iframes = document.querySelectorAll('iframe');
         let indiceAtual = 0;
 
